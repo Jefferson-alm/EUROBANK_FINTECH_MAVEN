@@ -1,58 +1,32 @@
 package com.eurobank.repository;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import com.eurobank.model.Customer;
 
 public class CustomerRepository {
 
-	ArrayList<Customer> listaClientes = new ArrayList<>();
+	ArrayList<Customer> listaClientes;
+	//List<Customer> listaCuentas = new ArrayList<>();
 	
 	public CustomerRepository() {
 		listaClientes = new ArrayList<Customer>();
 	}
 	
-	/*
-	 * UN CLIENTE TIENE SU CRUD
-	 * C = CREAR
-	 * R = LISTAR
-	 * U = UPDATE
-	 * D = DELETE (QUE EN ESTE CASO SOLO LO DAREMOS DE BAJA)
-	*/
-	
+	//UN CLIENTE TIENE SU CRUD
 	//CREAR CLIENTE
-	public void nuevoCliente(Customer customer) {
-		
-		String dni;
-		
-		
-		
-		String nombre;
-		String apellido;
-		String telefono;
-		String correo;
-		
-		
-		
-		
-		listaClientes.add(customer);
+	public void agregarCliente(Customer cliente) {
+		listaClientes.add(cliente);		
 	}
 	
 	//LISTAR CLIENTE
-	public void listar() {
-		System.out.println(listaClientes);
+	public List<Customer> listar() {
+	    return listaClientes;
 	}
-	
-	//UPDATE CLIENTE
-	
-	
-	//DELETE CLIENTE
-	
-	
-	
+
 	//METODO PARA BUSCAR DNI
 	public Customer buscarPorDni(String dni) {
-		
 		for(Customer cliente: listaClientes) {
 			if(cliente.getDni().equals(dni)) {
 				return cliente;
@@ -60,6 +34,5 @@ public class CustomerRepository {
 		}
 		return null;
 	}
-
 
 }

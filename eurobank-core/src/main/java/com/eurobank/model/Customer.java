@@ -1,77 +1,72 @@
 package com.eurobank.model;
 
-public class Customer {
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
-	private String dni;
-	private String nombre;
-	private String apellido;
-	private String telefono;
-	private String correo;
+
+public class Customer extends Person {
+
+	private String name_user; 
+	private String password;
+	private LocalDateTime fecha_creacion;
 	
-
+	List<Account> listaCuentas = new ArrayList<Account>();
+	
+	
 	public Customer() {
-
-	}
-
-	public Customer(String dni, String nombre, String apellido, String telefono, String correo) {
-		super();
-		this.dni = dni;
-		this.nombre = nombre;
-		this.apellido = apellido;
-		this.telefono = telefono;
-		this.correo = correo;
-	}
-
-	public String getDni() {
-		return dni;
-	}
-
-	public void setDni(String dni) {
-		this.dni = dni;
-	}
-
-	public String getNombre() {
-		return nombre;
-	}
-
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
-
-	public String getApellido() {
-		return apellido;
-	}
-
-	public void setApellido(String apellido) {
-		this.apellido = apellido;
-	}
-
-	public String getTelefono() {
-		return telefono;
-	}
-
-	public void setTelefono(String telefono) {
-		this.telefono = telefono;
-	}
-
-	public String getCorreo() {
-		return correo;
-	}
-
-	public void setCorreo(String correo) {
-		this.correo = correo;
+		
 	}
 	
+	public Customer(int id, String dni_cliente, String nombre_cliente, String apellido_cliente, String telefono_cliente, String correo_electronico, LocalDateTime fecha_creacion, String name_user ,String password) {
+		super(id, dni_cliente, nombre_cliente, apellido_cliente, telefono_cliente, correo_electronico);
+		this.fecha_creacion = fecha_creacion;
+		this.name_user = name_user;
+		this.password = password;
+	}
 
+	public Customer(int id, String dni_cliente, String nombre_cliente, String apellido_cliente, String telefono_cliente, String correo_electronico, LocalDateTime fecha_creacion, String password, ArrayList<Account> listaCuentas) {
+		super(id, dni_cliente, nombre_cliente, apellido_cliente, telefono_cliente, correo_electronico);
+		this.fecha_creacion = fecha_creacion;
+		this.password = password;
+		this.listaCuentas = listaCuentas;
+	}
+	
+	
+	public LocalDateTime getFecha_creacion() {
+		return fecha_creacion;
+	}
+	public void setFecha_creacion(LocalDateTime fecha_creacion) {
+		this.fecha_creacion = fecha_creacion;
+	}
+	public String getName_user() {
+		return name_user;
+	}
+	public void setName_user(String name_user) {
+		this.name_user = name_user;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<Account> getListaCuentas() {
+		return listaCuentas;
+	}
+	public void setListaCuentas(List<Account> listaCuentas) {
+		this.listaCuentas = listaCuentas;
+	}
+	
 	@Override
 	public String toString() {
-		return 
-	            "\t\nDNI: " + dni +
-	            "\t\nNOMBRE: " + nombre +
-	            "\t\nAPELLIDO: " + apellido+
-	            "\t\nTELEFONO: " + telefono+
-	            "\t\nCORREO ELECTRONICO: " + correo
-	           ;
+		return 	super.toString() + 			
+				"\n\tUSUARIO: " + name_user +
+				"\n\tFECHA CREACION: " + fecha_creacion +
+				"\n\tCUENTAS: " + listaCuentas +
+				"\n";
 	}
+	
 	
 }

@@ -2,24 +2,33 @@ package com.eurobank.model;
 
 public class Person {
 
+	private int id;
 	private String dni;
 	private String nombre;
 	private String apellido;
 	private String telefono;
 	private String correo;
 	
-
 	public Person() {
 
 	}
 
-	public Person(String dni, String nombre, String apellido, String telefono, String correo) {
+	public Person(int id, String dni, String nombre, String apellido, String telefono, String correo) {
 		super();
+		this.id = id;
 		this.dni = dni;
 		this.nombre = nombre;
 		this.apellido = apellido;
 		this.telefono = telefono;
 		this.correo = correo;
+	}
+	
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getDni() {
@@ -62,16 +71,15 @@ public class Person {
 		this.correo = correo;
 	}
 	
-
 	@Override
 	public String toString() {
 		return 
+				"\t\nID: " + id +
 	            "\t\nDNI: " + dni +
 	            "\t\nNOMBRE: " + nombre +
 	            "\t\nAPELLIDO: " + apellido+
 	            "\t\nTELEFONO: " + telefono+
-	            "\t\nCORREO ELECTRONICO: " + correo
-	           ;
+	            "\t\nCORREO ELECTRONICO: " + correo;
 	}
 	
 }

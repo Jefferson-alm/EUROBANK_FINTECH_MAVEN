@@ -1,0 +1,10 @@
+COMO ACTUALIZAR EN GITHUB MEDIANTE CONTROLES TERMINAL
+
+pwd
+-..
+ubicarse en la carpeta git
+...
+git status
+git add .
+git commit -m "Descripción de los cambios"
+git push
