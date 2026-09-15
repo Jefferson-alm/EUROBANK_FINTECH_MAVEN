@@ -85,11 +85,17 @@ public class Account {
 
 	@Override
     public String toString() {
+		String nuevoStado;
+		if(estado) {
+			nuevoStado = "Activo";
+		}else {
+			nuevoStado = "Inhabilitado";
+		}
         return "\n\t\tID_Cuenta: " + id +
         		"\n\t\tNro Cuenta: " + nro_cuenta +
                 "\n\t\tCCI: " + nro_cci +
                 "\n\t\tSaldo: " + saldo +
-                "\n\t\tEstado: " + estado ;
+                "\n\t\tEstado: " + nuevoStado ;
         
     }
 	

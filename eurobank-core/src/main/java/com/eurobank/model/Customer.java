@@ -55,8 +55,9 @@ public class Customer extends Person {
 	public List<Account> getListaCuentas() {
 		return listaCuentas;
 	}
-	public void setListaCuentas(List<Account> listaCuentas) {
-		this.listaCuentas = listaCuentas;
+	
+	public void add_account(Account cuenta) {
+		listaCuentas.add(cuenta);
 	}
 	
 	@Override

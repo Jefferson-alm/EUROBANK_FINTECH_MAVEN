@@ -35,7 +35,9 @@ public class CustomerService {
 		//valido el dni
 		validarDni(dni);
 		//e inmediatamente verifico que no existe
-		existeDNI(dni);
+		if(existeDNI(dni)) {
+			throw new DniErrorExceptions("ERROR: DNI ya existe");
+		}
 		
 		validarNombre(nombre);
 		validarApellido(apellido);
@@ -155,11 +157,13 @@ public class CustomerService {
 		}
 	}
 
-	private void existeDNI(String dni) throws DniErrorExceptions{
+	public boolean existeDNI(String dni){
 		Customer clienteExistente = clienteRepository.buscarPorDni(dni);
 		//si existe mando un error, si no continuo
 		if(clienteExistente != null) {
-			throw new DniErrorExceptions("EL DNI YA EXISTE: " + dni+"\n");
+			return true;
+		}else {
+			return false;
 		}
 	}
 	
