@@ -8,14 +8,14 @@ public class Account {
 	private String nro_cuenta;
     private String nro_cci;
     private double saldo;
-    private String movimientos;
+    private StringBuilder movimientos;
     private boolean estado;
     private LocalDateTime fechaCreacion;
 
     public Account() {
     }
 
-    public Account(int id, String nro_cuenta, String nro_cci, double saldo, String movimientos, boolean estado, LocalDateTime fechaCreacion) {
+    public Account(int id, String nro_cuenta, String nro_cci, double saldo, StringBuilder movimientos, boolean estado, LocalDateTime fechaCreacion) {
     	this.id = id;
         this.nro_cuenta = nro_cuenta;
         this.nro_cci = nro_cci;
@@ -58,11 +58,11 @@ public class Account {
         this.saldo = saldo;
     }
     
-    public String getMovimientos() {
+    public StringBuilder getMovimientos() {
 		return movimientos;
 	}
 
-	public void setMovimientos(String movimientos) {
+	public void setMovimientos(StringBuilder movimientos) {
 		this.movimientos = movimientos;
 	}
 	

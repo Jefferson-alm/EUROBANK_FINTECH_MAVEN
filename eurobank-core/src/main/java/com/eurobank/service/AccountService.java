@@ -21,9 +21,10 @@ public class AccountService {
 	static String cod_pais = "9999";
 	static String cod_banco = "1234";
 	static int idContador = 1;
-    private static AccountRepository acRepos = new AccountRepository();
+	private static AccountRepository acRepos = new AccountRepository();
+	
 
-	public static void crearCuenta(Customer cliente, char crear) {
+	public void crearCuenta(Customer cliente, char crear) {
 
 		if(crear == 's') {
 			SecureRandom r = new SecureRandom();
@@ -42,7 +43,9 @@ public class AccountService {
 
 			double saldo = 10.00;
 
-			String movimientos = "CUENTA CREADA: + S/ 10.00";
+			StringBuilder movimientos = new StringBuilder();
+			
+			movimientos.append( "CUENTA CREADA: + S/ 10.00");
 
 			boolean estado = true;
 			LocalDateTime fechaCreacion = LocalDateTime.now();
@@ -62,4 +65,68 @@ public class AccountService {
 		}
 	}
 
+
+	//DEPOSITAR DINERO
+
+	public boolean depositarDinero(Customer cliente, String nro_cuenta, double deposito) {
+		
+		boolean depositado = false;
+		System.out.println("entro 0");
+		
+		if(cliente != null) {
+			System.out.println("entro 1");
+		
+			for (Account cuenta: acRepos.listarCuentas()) {
+				System.out.println("entro 2");
+				
+				if(cuenta.getNro_cuenta().equals(nro_cuenta) ){	
+					System.out.println("entro 3");
+					double nuevoSaldo = cuenta.getSaldo() + deposito;
+					cuenta.setSaldo(nuevoSaldo);
+					System.out.println("Deposito Creado");
+					System.out.println(cliente);
+					depositado = true;
+					
+					StringBuilder mov_ = new StringBuilder();
+					
+					mov_.append(cuenta.getMovimientos()+"\n");
+					mov_.append("DEPOSITO: s/"+deposito+"\n");
+					
+					cuenta.setMovimientos(mov_);
+					
+					
+					System.out.println(cuenta.getMovimientos());
+					break;
+				}
+			}
+		}
+		
+		return depositado;
+
+	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
